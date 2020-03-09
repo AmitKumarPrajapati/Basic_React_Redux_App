@@ -9,7 +9,8 @@ if(action.type === "AGE_UP"){
  return {
     ...state,
     age: state.age + action.value,
-    history: state.history.concat({id:Math.random(),age: state.age + action.value})
+    history: state.history.concat({id:Math.random(),age: state.age + action.value}),
+    loading: false
  }
 }
 
@@ -27,6 +28,13 @@ if(action.type === "DELETE") {
     history: state.history.filter(el => el.id !== action.key)
   }
 }
+
+if(action.type === "LOADING"){
+  return {
+     ...state,
+     loading: true
+  }
+ }
 
 return newState;
 }

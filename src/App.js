@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import logo from './logo.svg'
 import { connect } from 'react-redux';
+import actionCreator from './store/actions/actions'
 
 class App extends Component {
   render() {
@@ -9,6 +11,9 @@ class App extends Component {
         <h3>Age: <span>{this.props.age}</span></h3>
         <button onClick={this.props.onAgeUp}>Age Up</button>
         <button onClick={this.props.onAgeDown}>Age Down</button>
+        {
+          this.props.loading && <img src={logo} alt="Not found" className="App-logo" />
+        }
         <hr />
         <div>
           <h3>History</h3>
@@ -28,15 +33,16 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     age: state.age,
-    history: state.history
+    history: state.history,
+    loading: state.loading,
   }
 }
 
 const mapDispachToProps = (dispach) => {
   return {
-    onAgeUp: () => dispach({ type: 'AGE_UP', value: 1 }),
-    onAgeDown: () => dispach({ type: 'AGE_DOWN', value: 1 }),
-    onDeleteHistory: (id) => dispach({type:'DELETE', key: id})
+    onAgeUp: () => dispach(actionCreator.ageUp(1)),
+    onAgeDown: () => dispach(actionCreator.ageDown(1)),
+    onDeleteHistory: (id) => dispach(actionCreator.onDelete(id))
   }
 }
 
