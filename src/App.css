@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.historyItem {
+  list-style-type:none;
+  border: 1px solid #61dafb;
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px; ;
+  background-color: beige;
+}
+
+button {
+  padding: 10px;
+  margin: 20px;
+}
